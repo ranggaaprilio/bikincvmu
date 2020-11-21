@@ -91,23 +91,6 @@
     <b-modal id="modal-register" ref="modal-register" title="Sign UP" hide-footer>
       <div>
         <b-form v-if="show" @submit="onSubmit" @reset="onReset">
-          <!-- <b-form-group
-            id="input-group-0"
-            label="Name:"
-            label-for="input-1"
-          >
-            <b-form-input
-              id="input-0"
-              v-model="register.name"
-              v-validate="{ required: true, min: 3 }"
-              type="text"
-              :state="validateState('input-0')"
-              aria-describedby="input-0-live-feedback"
-              data-vv-as="Name"
-              placeholder="Masukan nama"
-            />
-            <b-form-invalid-feedback id="input-1-live-feedback">{{ veeErrors.first('input-0') }}</b-form-invalid-feedback>
-          </b-form-group> -->
           <b-form-group id="example-input-group-1" label="Name" label-for="example-input-1">
             <b-form-input
               id="example-input-1"
@@ -224,6 +207,8 @@ export default {
     },
     async onSubmit(evt) {
       evt.preventDefault();
+      const jsonData = JSON.parse(JSON.stringify(this.form));
+      this.$store.dispatch('auth/setUserState', jsonData);
     },
     onReset(evt) {
       evt.preventDefault();

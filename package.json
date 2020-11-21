@@ -32,7 +32,9 @@
         "aos": "^2.3.4",
         "bootstrap-vue": "^2.19.0",
         "vee-validate": "^2.2.15",
+        "vue-carousel": "^0.18.0",
         "vue-router": "^3.4.9",
+        "vuex": "^3.5.1",
         "webpack-livereload-plugin": "^2.3.0"
     }
 }

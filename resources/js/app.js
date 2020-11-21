@@ -5,6 +5,7 @@
  */
 import App from './views';
 import router from './routes';
+import store from './store';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 import VeeValidate from 'vee-validate';
 import AOS from 'aos';
@@ -45,5 +46,6 @@ new Vue({
     AOS.init();
   },
   router,
+  store,
   render: (h) => h(App),
 });

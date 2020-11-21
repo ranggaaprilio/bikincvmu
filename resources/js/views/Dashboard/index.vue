@@ -1,13 +1,19 @@
 <template>
-  <Banner/>
+<div>
+    <Banner/>
+  <b-container>
+    <Minicontent/>
+  </b-container>
+</div>
 </template>
 
 <script>
-import {Banner} from './components';
+import {Banner, Minicontent} from './components';
 export default {
   name: 'dashboard',
   components: {
     Banner,
+    Minicontent,
   },
 };
 </script>
