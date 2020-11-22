@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Paling banyak di download</h4>
+    <h4>Paling banyak di unduh</h4>
     <hr>
     <b-row>
       <b-col cols="12">

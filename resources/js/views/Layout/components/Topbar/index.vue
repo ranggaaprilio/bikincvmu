@@ -172,8 +172,8 @@ export default {
     return {
       logo: '../images/logo.png',
       form: {
-        email: 'user@laravue.dev',
-        password: 'laravue',
+        email: 'user@bikincvmu.com',
+        password: 'password',
 
       },
       register: {

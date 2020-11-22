@@ -1,3 +1,5 @@
+import {loginFetch} from '../../utils/apiUtils';
+
 const state = {
   id: null,
   user: null,
@@ -24,8 +26,9 @@ const mutations = {
 };
 
 const actions = {
-  setUserState({commit}, payload) {
-    console.log('payload', payload);
+  async setUserState({commit}, payload) {
+    const api = await loginFetch(payload);
+    console.log(api, 'api payload');
   },
 };
 
