@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'  => 'user',
             'email' => 'user@bikincvmu.com',
-            'password'  => bcrypt('password')
+            'password'  => bcrypt('password'),
+            'role_id'=>2
     ]);
     }
 }

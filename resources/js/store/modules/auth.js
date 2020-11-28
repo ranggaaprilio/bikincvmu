@@ -3,7 +3,7 @@ import {loginFetch} from '../../utils/apiUtils';
 const state = {
   id: null,
   user: null,
-  token: '',
+  isAuntenticate: false,
 };
 
 const mutations = {
@@ -29,6 +29,12 @@ const actions = {
   async setUserState({commit}, payload) {
     const api = await loginFetch(payload);
     console.log(api, 'api payload');
+    localStorage.setItem('@id', api.data.id);
+    // Commit Data
+    commit('SET_ID', payload.id);
+    commit('SET_AVATAR', payload.avatar);
+    commit('SET_ROLES', payload.roles[0]);
+    commit('SET_NAME', payload.name);
   },
 };
 
