@@ -1,40 +1,43 @@
-import {loginFetch} from '../../utils/apiUtils';
+import {loginFetch, CheckToken as checkToken} from '../../utils/apiUtils';
 
 const state = {
   id: null,
   user: null,
-  isAuntenticate: false,
+  isAuthenticate: false,
 };
 
 const mutations = {
   SET_ID: (state, id) => {
     state.id = id;
   },
+  SET_USER: (state, user) => {
+    state.user = user;
+  },
   SET_TOKEN: (state, token) => {
     state.token = token;
   },
-  SET_NAME: (state, name) => {
-    state.name = name;
+  SET_AUTH: (state, auth) => {
+    state.isAuthenticate = auth;
   },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar;
-  },
-  SET_ROLES: (state, roles) => {
-    state.roles = roles;
-  },
-
 };
 
 const actions = {
-  async setUserState({commit}, payload) {
+  async setUserLogin({commit}, payload) {
     const api = await loginFetch(payload);
     console.log(api, 'api payload');
-    localStorage.setItem('@id', api.data.id);
+    localStorage.setItem('@id', api.user.id);
+    localStorage.setItem('@token', api.access_token);
+    localStorage.setItem('@name', api.user.name);
     // Commit Data
-    commit('SET_ID', payload.id);
-    commit('SET_AVATAR', payload.avatar);
-    commit('SET_ROLES', payload.roles[0]);
-    commit('SET_NAME', payload.name);
+    commit('SET_ID', api.user.id);
+    // commit('SET_AVATAR', payload.avatar);
+    commit('SET_USER', api.user);
+    commit('SET_TOKEN', api.access_token);
+    commit('SET_AUTH', true);
+  },
+  async getVerifyToken({commit}, payload) {
+    const api = await checkToken(payload);
+    console.log(api, 'api payload');
   },
 };
 

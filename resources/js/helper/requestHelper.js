@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 import api from './axiosHelper';
 
-export const requestAPI = async (url, method, obj) => {
-  // const Bearer = localStorage.getItem('@token');
-  // if (Bearer) {
-  //   axios.defaults.headers.common['Authorization'] = `Bearer ${Bearer}`;
-  // } else {
-  //   console.error('Bearer Token is not registered');
-  // }
+export const requestAPI = async (url, method, obj={}) => {
+  const Bearer = localStorage.getItem('@token');
+  if (Bearer) {
+    api.defaults.headers.common['Authorization'] = `Bearer ${Bearer}`;
+  } else {
+    console.error('Bearer Token is not registered');
+  }
 
   if (method === 'post') {
     try {

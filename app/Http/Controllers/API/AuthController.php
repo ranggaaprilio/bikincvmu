@@ -42,4 +42,23 @@ class AuthController extends Controller
       }
     
    }
+
+   public function CheckToken($id)
+   {
+    try {
+        $user=User::where('id', $id)->first();
+        return response()->json([
+          'status_code' => 200,
+          'success'=>'true',
+          'user'=> $user,
+        ]);
+      } catch (Exception $error) {
+        return response()->json([
+          'status_code' => 500,
+          'message' => 'Error in Login',
+          'error' => $error
+        ]);
+      }
+    
+   }
 }

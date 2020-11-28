@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('API')->group(function() {
 
     Route::post('auth/login', 'AuthController@login');
-   
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('auth/check/{id}', 'AuthController@CheckToken');
+    });
 });

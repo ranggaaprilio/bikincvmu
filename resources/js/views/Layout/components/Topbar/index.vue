@@ -189,10 +189,11 @@ export default {
     };
   },
   created() {
-    if (localStorage.getItem('@id')) {
+    if (localStorage.getItem('@token')) {
       this.isAunteticated = true;
       this.name = localStorage.getItem('@name');
-      this.avatar = localStorage.getItem('@avatar');
+      // this.avatar = localStorage.getItem('@avatar');
+      this.$store.dispatch('auth/getVerifyToken', localStorage.getItem('@id'));
     }
   },
   methods: {
@@ -208,7 +209,7 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
       const jsonData = JSON.parse(JSON.stringify(this.form));
-      this.$store.dispatch('auth/setUserState', jsonData);
+      this.$store.dispatch('auth/setUserLogin', jsonData);
     },
     onReset(evt) {
       evt.preventDefault();
