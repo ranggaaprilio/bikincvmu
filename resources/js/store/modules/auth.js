@@ -3,7 +3,7 @@ import {loginFetch, CheckToken as checkToken} from '../../utils/apiUtils';
 const state = {
   id: null,
   user: null,
-  isAuthenticate: false,
+  isAuthenticate: null,
 };
 
 const mutations = {
@@ -34,10 +34,27 @@ const actions = {
     commit('SET_USER', api.user);
     commit('SET_TOKEN', api.access_token);
     commit('SET_AUTH', true);
+
+    return api.success;
   },
   async getVerifyToken({commit}, payload) {
     const api = await checkToken(payload);
     console.log(api, 'api payload');
+    if (api.success==='true') {
+      commit('SET_ID', api.user.id);
+      // commit('SET_AVATAR', payload.avatar);
+      commit('SET_USER', api.user);
+      commit('SET_TOKEN', localStorage.getItem('@token'));
+      commit('SET_AUTH', true);
+    } else {
+      localStorage.clear();
+      commit('SET_ID', null);
+      // commit('SET_AVATAR', payload.avatar);
+      commit('SET_USER', null);
+      commit('SET_TOKEN', null);
+      commit('SET_AUTH', false);
+    }
+    return api.success;
   },
 };
 

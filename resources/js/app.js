@@ -8,6 +8,9 @@ import router from './routes';
 import store from './store';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 import VeeValidate from 'vee-validate';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // require('./bootstrap');
@@ -26,6 +29,8 @@ Vue.use(VeeValidate, {
   // This is not required but avoids possible naming conflicts
   errorBagName: 'veeErrors',
 });
+// vue Sweet Alert
+Vue.use(VueSweetalert2);
 
 /**
  * The following block of code may be used to automatically register your

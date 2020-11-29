@@ -183,18 +183,22 @@ export default {
         verif: '',
       },
       show: true,
-      isAunteticated: false,
-      name: '',
       avatar: '',
+      // isAunteticated: false,
     };
   },
   created() {
     if (localStorage.getItem('@token')) {
-      this.isAunteticated = true;
-      this.name = localStorage.getItem('@name');
-      // this.avatar = localStorage.getItem('@avatar');
       this.$store.dispatch('auth/getVerifyToken', localStorage.getItem('@id'));
     }
+  },
+  computed: {
+    isAunteticated: function() {
+      return this.$store.getters.isAunteticated;
+    },
+    name: function() {
+      return this.$store.getters.user.name;
+    },
   },
   methods: {
     validateState(ref) {
@@ -209,7 +213,15 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
       const jsonData = JSON.parse(JSON.stringify(this.form));
-      this.$store.dispatch('auth/setUserLogin', jsonData);
+      const SendApi= await this.$store.dispatch('auth/setUserLogin', jsonData);
+      if (SendApi==='true') {
+        this.$refs['modal-login'].hide();
+        this.$swal({icon: 'success',
+          title: 'Login Successfull'});
+      } else {
+        this.$refs['modal-login'].hide();
+        alert('login Failed');
+      }
     },
     onReset(evt) {
       evt.preventDefault();
