@@ -15,5 +15,20 @@ module.exports = {
     'vue',
   ],
   'rules': {
+    'vue/max-len': ['error', {
+      'code': 80,
+      'template': 80,
+      'tabWidth': 2,
+      'comments': 80,
+      'ignorePattern': '',
+      'ignoreComments': true,
+      'ignoreTrailingComments': true,
+      'ignoreUrls': false,
+      'ignoreStrings': true,
+      'ignoreTemplateLiterals': false,
+      'ignoreRegExpLiterals': false,
+      'ignoreHTMLAttributeValues': true,
+      'ignoreHTMLTextContents': true,
+    }],
   },
 };
