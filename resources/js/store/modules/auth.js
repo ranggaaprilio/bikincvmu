@@ -1,4 +1,7 @@
-import {loginFetch, CheckToken as checkToken} from '../../utils/apiUtils';
+import {
+  loginFetch,
+  CheckToken as checkToken,
+  logoutFetch} from '../../utils/apiUtils';
 
 const state = {
   id: null,
@@ -55,6 +58,26 @@ const actions = {
       commit('SET_AUTH', false);
     }
     return api.success;
+  },
+  async userLogout({commit}, payload) {
+    try {
+      const sendAPI = await logoutFetch();
+      console.log(sendAPI, 'sendApi');
+      if (sendAPI.success !== 'false') {
+        localStorage.clear();
+        commit('SET_ID', null);
+        // commit('SET_AVATAR', payload.avatar);
+        commit('SET_USER', null);
+        commit('SET_TOKEN', null);
+        commit('SET_AUTH', false);
+        return sendAPI;
+      } else {
+        return sendAPI;
+      }
+    } catch (error) {
+      console.log(error);
+      return {success: false, error};
+    }
   },
 };
 

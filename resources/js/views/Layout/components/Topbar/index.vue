@@ -38,7 +38,7 @@
             </b-nav-item> -->
             <b-nav-item>
               <div style="display:flex;">
-                <b-avatar variant="info" :src="avatar" />
+                <b-avatar variant="info" :src="profilPic" />
                 <b-nav-item-dropdown right>
                   <!-- Using 'button-content' slot -->
                   <template v-slot:button-content>
@@ -166,6 +166,7 @@
 
 <script>
 import router from '../../../../routes';
+import {userdetailFetch} from '../../../../utils/apiUtils';
 export default {
   name: 'Topbar',
   data() {
@@ -183,13 +184,13 @@ export default {
         verif: '',
       },
       show: true,
-      avatar: '',
       // isAunteticated: false,
     };
   },
   created() {
     if (localStorage.getItem('@token')) {
       this.$store.dispatch('auth/getVerifyToken', localStorage.getItem('@id'));
+      this.getUserDetail();
     }
   },
   computed: {
@@ -199,8 +200,29 @@ export default {
     name: function() {
       return this.$store.getters.user.name;
     },
+    profilPic: function() {
+      const {ProfilePic} = this.$store.getters;
+      if (ProfilePic) {
+        return `../storage/profilPic/${ProfilePic}`;
+      }
+      return '../storage/profilPic/origin.jpg';
+    },
   },
   methods: {
+    async getUserDetail() {
+      console.log('getUserDetail');
+      try {
+        const id = localStorage.getItem('@id');
+        const sendapi = await userdetailFetch(id);
+        if (sendapi.data.general_detail != null) {
+          this.$store.dispatch('info/setDetailState', sendapi.data);
+        }
+        // console.log('DOB VUEX', this.$store.getters.DOB);
+      } catch (error) {
+        console.log(error, 'errPersonal');
+        this.showAlert('Uppss,Internal Server Error', 'failed');
+      }
+    },
     validateState(ref) {
       if (
         this.veeFields[ref] &&
@@ -233,6 +255,15 @@ export default {
       evt.preventDefault();
     },
     async signingOut(evt) {
+      const response= await this.$store.dispatch('auth/userLogout');
+      console.log('response', response);
+      if (response.success==='false') {
+        this.$swal({icon: 'error',
+          title: 'Logout failed'});
+      } else {
+        this.$swal({icon: 'success',
+          title: 'Logout Success'});
+      }
     },
     routeme(name) {
       router.push({name});

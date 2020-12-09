@@ -13,7 +13,8 @@
                 Some quick example text to build on the card title
                 and make up the bulk of the card's content.{{ item.delay }}
               </b-card-text>
-              <b-button href="#" variant="primary">Go somewhere</b-button>
+              <b-button @click="routeme('detail',item.no)"
+              variant="primary">Go somewhere</b-button>
             </b-card>
           </slide>
         </carousel>
@@ -24,6 +25,7 @@
 
 <script>
 import {Carousel, Slide} from 'vue-carousel';
+import router from '../../../routes';
 const data = [
   {no: 1, text: 'lorem ipsum', delay: 700, pic: 'https://picsum.photos/600/300/?image=25'},
   {no: 2, text: 'lorem ipsum 2', delay: 1000, pic: 'https://picsum.photos/600/300/?image=25'},
@@ -53,6 +55,9 @@ export default {
     },
     onSlideEnd(slide) {
       this.sliding = false;
+    },
+    routeme(name, id) {
+      router.push({name, params: {id: id}});
     },
   },
 };

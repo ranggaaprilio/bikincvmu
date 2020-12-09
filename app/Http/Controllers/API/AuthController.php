@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Model\User;
+use Illuminate\Http\Response;
 use App\Helper\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 

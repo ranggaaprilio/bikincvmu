@@ -1,6 +1,7 @@
 import layout from '@views/Layout';
 import dashboard from '@views/Dashboard';
 import profile from '@views/Profile';
+import detail from '@views/Detail';
 
 
 const routes = [
@@ -25,6 +26,18 @@ const routes = [
         path: 'Profile',
         component: profile,
         name: 'profile',
+        // meta: {title: 'dashboard', icon: 'dashboard', noCache: false},
+      },
+    ],
+  },
+  {
+    path: '/detail/:id',
+    component: layout,
+    children: [
+      {
+        path: '',
+        component: detail,
+        name: 'detail',
         // meta: {title: 'dashboard', icon: 'dashboard', noCache: false},
       },
     ],
