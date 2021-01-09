@@ -22,9 +22,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name">DOB</label>
-                  <input id="name"
+                  <!-- <input id="name"
                   v-model="form.DOB" type="text"
-                  class="form-control">
+                  class="form-control"> -->
+                  <div>
+                    <date-picker v-model="form.DOB"
+                   valueType="format"></date-picker>
+                  </div>
                 </div></div>
               <div class="col-md-6">
                 <div class="form-group">
@@ -102,6 +106,9 @@ import {
   userdetailFetch,
   UpdateuserdetailFetch as updateuserdetailFetch,
 } from '../../../utils/apiUtils';
+
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
 export default {
   name: 'Personal',
   data() {
@@ -125,6 +132,7 @@ export default {
   created() {
     this.getUserDetail();
   },
+  components: {DatePicker},
   methods: {
     async getUserDetail() {
       console.log(this.$store.getters.DOB, 'naminan');
@@ -189,6 +197,7 @@ export default {
       const sendAPI = await updateuserdetailFetch(id, data);
       // console.log(sendAPI, 'send apu');
       if (sendAPI.success === true) {
+        data.ProfilePic=this.$store.getters.ProfilePic;
         this.showAlert('Succes Submit', 'success');
         this.$store.dispatch('info/setDetailState', data);
       } else {

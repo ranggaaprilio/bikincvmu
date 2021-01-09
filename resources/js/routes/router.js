@@ -2,6 +2,7 @@ import layout from '@views/Layout';
 import dashboard from '@views/Dashboard';
 import profile from '@views/Profile';
 import detail from '@views/Detail';
+import printPage from '../template/print';
 
 
 const routes = [
@@ -41,6 +42,11 @@ const routes = [
         // meta: {title: 'dashboard', icon: 'dashboard', noCache: false},
       },
     ],
+  },
+  {
+    path: '/print/:id',
+    component: printPage,
+    name: 'print',
   },
 ];
 

@@ -77,23 +77,31 @@ export default {
       const sendAPI = await updateEducationFetch(id, jsonData);
       if (sendAPI.success === true) {
         this.showAlert(`update success`, 'success');
-        this.loadEducate();
+        this.loadEducate('forced');
       } else {
         this.showAlert(`Uppss,ada yang salah : ${sendAPI.error}`, 'failed');
         return false;
       }
     },
-    async loadEducate() {
-      const sendAPI = await getEducationFetch(localStorage.getItem('@id'));
-      console.log(sendAPI, 'space');
-      if (sendAPI.success === true) {
-        if (sendAPI.data.options.length !== 0) {
-          this.spaceField = sendAPI.data.options;
+    async loadEducate(mode = '') {
+      const {education}=this.$store.getters;
+      if (education.length === 0|| mode==='forced' ) {
+        const sendAPI = await getEducationFetch(localStorage.getItem('@id'));
+        console.log(sendAPI, 'space');
+        if (sendAPI.success === true) {
+          if (sendAPI.data.options.length !== 0) {
+            this.spaceField = sendAPI.data.options;
+            this.$store.dispatch('info/setDetailPendidikan',
+                sendAPI.data.options);
+          }
+        } else {
+          console.log('failed2');
+          this.showAlert(`Uppss,ada yang salah : ${sendAPI.error}`, 'failed');
+          return false;
         }
       } else {
-        console.log('failed2');
-        this.showAlert(`Uppss,ada yang salah : ${sendAPI.error}`, 'failed');
-        return false;
+        const {education}=this.$store.getters;
+        this.spaceField =education;
       }
     },
     showAlert(msg, stat) {

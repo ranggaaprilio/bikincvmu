@@ -10,16 +10,26 @@ import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 import VeeValidate from 'vee-validate';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-// require('./bootstrap');
+
 
 window.Vue = require('vue');
+
+// import VueHtml2pdf from 'vue-html2pdf';
+// Vue.use(VueHtml2pdf);
+// or, using the defaults with no stylesheet
+// Vue.use(VueHtmlToPaper);
+// require('./bootstrap');
+
+
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 // validasi form;
 Vue.use(VeeValidate, {
   // This is the default

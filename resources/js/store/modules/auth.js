@@ -1,7 +1,8 @@
 import {
   loginFetch,
   CheckToken as checkToken,
-  logoutFetch} from '../../utils/apiUtils';
+  logoutFetch,
+  RegistFetch as registFetch} from '../../utils/apiUtils';
 
 const state = {
   id: null,
@@ -39,6 +40,10 @@ const actions = {
     commit('SET_AUTH', true);
 
     return api.success;
+  },
+  async setUserRegister({commit}, payload) {
+    const api = await registFetch(payload);
+    return api.data.success;
   },
   async getVerifyToken({commit}, payload) {
     const api = await checkToken(payload);

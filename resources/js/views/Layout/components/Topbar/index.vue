@@ -156,7 +156,7 @@
             />
             <b-form-invalid-feedback id="input-3-live-feedback">{{ veeErrors.first('verif-password') }}</b-form-invalid-feedback>
           </b-form-group>
-          <b-button type="submit" variant="primary" @click="onregist">Submit</b-button>
+          <b-button type="submit" variant="primary" @click="onRegist">Submit</b-button>
           <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
       </div>
@@ -173,8 +173,8 @@ export default {
     return {
       logo: '../images/logo.png',
       form: {
-        email: 'user@bikincvmu.com',
-        password: 'password',
+        email: '',
+        password: '',
 
       },
       register: {
@@ -198,7 +198,7 @@ export default {
       return this.$store.getters.isAunteticated;
     },
     name: function() {
-      return this.$store.getters.user.name;
+      return this.$store.getters.name;
     },
     profilPic: function() {
       const {ProfilePic} = this.$store.getters;
@@ -245,14 +245,25 @@ export default {
         alert('login Failed');
       }
     },
+    async onRegist(evt) {
+      evt.preventDefault();
+      const jsonData = JSON.parse(JSON.stringify(this.register));
+      const SendApi= await this.$store.dispatch(
+          'auth/setUserRegister', jsonData);
+      if (SendApi==='true') {
+        this.$refs['modal-login'].hide();
+        this.$swal({icon: 'success',
+          title: 'Register Successfull'});
+      } else {
+        this.$refs['modal-login'].hide();
+        alert('Register Failed');
+      }
+    },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.form.email = '';
       this.form.password = '';
-    },
-    onregist: async function(evt) {
-      evt.preventDefault();
     },
     async signingOut(evt) {
       const response= await this.$store.dispatch('auth/userLogout');

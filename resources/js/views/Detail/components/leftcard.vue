@@ -4,7 +4,9 @@
           <h5>Formal</h5>
           <hr>
              <b-img v-for="(item, key) in thumbnail" :key="key"
-            :src="item" fluid alt="Fluid image" class="pl-3 mb-2 mr-3"></b-img>
+            :src="item.src" fluid alt="Fluid image"
+            class="pl-3 mb-2 mr-3" @click="routeme('detail',item.id)"
+            width="189px" height="267px"></b-img>
         </b-card>
     </b-col>
 
@@ -12,18 +14,24 @@
 
 <script>
 
-
+import router from '../../../routes';
 export default {
   name: 'leftcard',
   data() {
     return {
       thumbnail: [
-        '../storage/template/download.png',
-        '../storage/template/download.png',
-        '../storage/template/download.png',
-        '../storage/template/download.png',
+        {src: '../storage/template/download.png', id: 1},
+        {src: '../storage/template/formal.png', id: 2},
+        {src: '../storage/template/download.png', id: 3},
+        {src: '../storage/template/download.png', id: 4},
       ],
     };
+  },
+  methods: {
+    routeme(name, id) {
+      console.log('asdfggfg');
+      router.push({name, params: {id: id}});
+    },
   },
 
 };
@@ -31,7 +39,8 @@ export default {
 
 <style>
 .wrap-card{
-  max-height: 90vh;
+  height: 100vh;
+  max-height: 100vh;
   overflow-y: auto;
 }
 </style>

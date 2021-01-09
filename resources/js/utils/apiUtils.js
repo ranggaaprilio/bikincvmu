@@ -55,13 +55,14 @@ export const CheckToken = async (id) => {
  */
 export const RegistFetch = async (obj) => {
   try {
-    const xrsf = await Csrf.getCookie();
-    if (xrsf != null) {
-      const response = await requestAPI(URL.regist_URL, 'post', obj);
-      console.log(response, 'Login Hasil');
-      return response;
-    }
+    // const xrsf = await Csrf.getCookie();
+    console.log('register2');
+
+    const response = await requestAPI(URL.regist_URL, 'post', obj);
+    console.log(response, 'Login Hasil');
+    return response;
   } catch (error) {
+    console.error(error, 'error');
     return {success: false,
       status: error.response.status,
       result: error.response.data};

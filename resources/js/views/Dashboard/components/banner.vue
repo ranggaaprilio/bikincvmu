@@ -11,7 +11,7 @@
             semudah mengisi biodata hanya dengan 5 menit.
             </h4>
           <hr style="background-color:white">
-          <b-button variant="warning">
+          <b-button variant="warning" @click="routeme('detail')">
               <a href="#tabs-category"
               style="text-decoration:none;color:rgb(4, 37, 73)">
                   Ayo mulai
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import router from '../../../routes';
 export default {
   name: 'banner',
   data() {
@@ -37,6 +38,11 @@ export default {
       pic: '../svg/bannner.svg',
       show: true,
     };
+  },
+  methods: {
+    routeme(name) {
+      router.push({name, params: {id: 1}});
+    },
   },
 };
 </script>

@@ -98,6 +98,8 @@ export default {
       if (sendApi.success) {
         console.log(sendApi.data, 'list data');
         this.listdata = sendApi.data;
+        this.$store.dispatch('info/setDetailAbility',
+            sendApi.data);
       }
     },
     post: async function() {

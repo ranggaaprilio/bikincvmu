@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Model\User;
+use App\Http\Model\UserDetail;
 use Illuminate\Http\Response;
 use App\Helper\JsonResponse;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+      try {
         $jsonData=$request->only('name','email','pass');
         $user=User::create([
             'name' => $jsonData['name'],
@@ -34,7 +36,12 @@ class AuthController extends Controller
             return response()->json(new JsonResponse(["msg"=>"Register Successfull,please login..","success"=>'true']), Response::HTTP_OK);
             
         }
+      } catch (\Throwable $th) {
+        dd($th);
         return response()->json(new JsonResponse([],'Regist Failed Found'), 500);
+      }
+        
+      
 
     }
 
