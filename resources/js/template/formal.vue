@@ -3,7 +3,7 @@
  <!-- <b-card > -->
           <div class="canvas" id="print-this">
             <div class="main">
-              <div style="width: 25%;
+              <div style="width: 50%;
                      background-color: rgb(255 235 0);"></div>
               <div class="box-data">
                 <div class="main-box">
@@ -223,7 +223,7 @@ export default {
 
 <style>
   .canvas{
-    width: 100%;
+    width: 210mm;
     height: 297mm;
     background-color: white;
   }

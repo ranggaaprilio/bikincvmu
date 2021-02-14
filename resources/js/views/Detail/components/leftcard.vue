@@ -1,11 +1,11 @@
 <template>
-    <b-col md="6">
+    <b-col md="5">
         <b-card class="wrap-card" >
           <h5>Formal</h5>
           <hr>
              <b-img v-for="(item, key) in thumbnail" :key="key"
             :src="item.src" fluid alt="Fluid image"
-            class="pl-3 mb-2 mr-3" @click="routeme('detail',item.id)"
+            class="pl-3 mb-2 mr-1" @click="routeme('detail',item.id)"
             width="189px" height="267px"></b-img>
         </b-card>
     </b-col>

@@ -1,5 +1,5 @@
 <template>
-<b-col md="6">
+<b-col md="7">
     <General v-if="param==1" />
     <Formal v-if="param==2" />
 </b-col>
