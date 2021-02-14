@@ -240,6 +240,7 @@ export default {
         this.$refs['modal-login'].hide();
         this.$swal({icon: 'success',
           title: 'Login Successfull'});
+        this.getUserDetail();
       } else {
         this.$refs['modal-login'].hide();
         alert('login Failed');

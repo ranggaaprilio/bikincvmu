@@ -222,8 +222,8 @@ export default {
 
 <style>
   .canvas{
-    width: 100%;
-    height: 297mm;
+   max-width: 210mm;
+   max-height: 297mm;
     /* background-color: whitesmoke; */
   }
 
@@ -330,7 +330,7 @@ page {
   box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
 }
 page[size="A4"] {
-  width: 21cm;
-  height: 29.7cm;
+  width: 210mm;
+  height: 297mm;
 }
 </style>

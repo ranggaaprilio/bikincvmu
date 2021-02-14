@@ -50,18 +50,19 @@ export default {
     }
     @media print {
         html, body {
-            width: 210mm;
-            height: 297mm;
+            max-width: 210mm;
+            max-height: 297mm;
+            background-color: white !important;
         }
         .page {
-            margin: 0;
-            border: initial;
-            border-radius: initial;
-            width: initial;
+            margin-bottom : 0;
+            border: none;
+            border-radius: none;
+            min-width: initial;
             min-height: initial;
-            box-shadow: initial;
-            background: initial;
-            page-break-after: always;
+            /* box-shadow: initial; */
+            /* background: initial; */
+            page-break-after: unset;
         }
     }
 </style>
