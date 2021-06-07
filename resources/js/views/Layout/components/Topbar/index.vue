@@ -100,7 +100,7 @@
               :state="validateState('example-input-1')"
               aria-describedby="input-1-live-feedback"
               data-vv-as="Name"
-              placeholder="masukan nama lengakap anda"
+              placeholder="masukan nama lengkap anda"
             />
 
             <b-form-invalid-feedback id="input-1-live-feedback">{{ veeErrors.first('example-input-1') }}</b-form-invalid-feedback>

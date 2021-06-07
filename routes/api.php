@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
+use App\Helper\JsonResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('API')->group(function() {
 
+    Route::get('/', function (Request $request)
+    {
+        return response()->json(new JsonResponse(["msg"=>"Welcome to BikinCV Api"]), Response::HTTP_OK);
+    });
     Route::post('auth/login', 'AuthController@login');
     Route::post('auth/regist', 'AuthController@register');
     Route::group(['middleware' => 'auth:sanctum'], function () {
