@@ -1,3 +1,4 @@
+<!--eslint-disable max-len -->
 <template>
   <div>
     <h4>Paling banyak di unduh</h4>
@@ -6,12 +7,14 @@
       <b-col cols="12">
         <carousel :per-page="4">
           <slide v-for="(item, key) in cardLoops" :key="key" class="p-2">
-            <b-card :title='item.title' :img-src="item.pic"
+            <div>
+               <b-card :title='item.title' :img-src="item.pic"
              img-alt="Image" img-top tag="article"
-             data-aos="zoom-in-up" :data-aos-delay="item.delay">
+             data-aos="zoom-in-up" :data-aos-delay="item.delay" img-width="270" img-height="350">
               <b-button @click="routeme('detail',item.no)"
               variant="primary" >Preview</b-button>
             </b-card>
+            </div>
           </slide>
         </carousel>
       </b-col>
