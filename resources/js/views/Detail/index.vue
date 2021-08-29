@@ -1,6 +1,5 @@
 <template>
- <div class="pt-2">
-     <b-container>
+ <div class="pt-2 mr-2 ml-2">
         <b-row>
                 <Leftcard/>
                 <Rightcard/>
@@ -9,7 +8,6 @@
                   style="margin-top:22px;font-size:30px"/>
                 </button>
         </b-row>
-     </b-container>
  </div>
 </template>
 

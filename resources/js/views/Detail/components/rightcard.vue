@@ -1,7 +1,9 @@
 <template>
 <b-col md="7">
+    <div class="maxWidth">
     <General v-if="param==1" />
     <Formal v-if="param==2" />
+    </div>
 </b-col>
 </template>
 
@@ -28,5 +30,8 @@ export default {
 </script>
 
 <style>
-
+.maxWidth {
+    max-width: 99%;
+    overflow: hidden;
+}
 </style>

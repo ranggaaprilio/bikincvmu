@@ -31,12 +31,13 @@ export default {
   .page {
         width: 210mm;
         min-height: 297mm;
-        padding: 20mm;
+        padding: 10mm;
         margin: 10mm auto;
         border: 1px #D3D3D3 solid;
         border-radius: 5px;
         background: white;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
     }
     .subpage {
         padding: 1cm;

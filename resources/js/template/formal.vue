@@ -3,7 +3,7 @@
  <!-- <b-card > -->
           <div class="canvas" id="print-this">
             <div class="main">
-              <div style="width: 50%;
+              <div style="width: 30%;
                      background-color: rgb(255 235 0);"></div>
               <div class="box-data">
                 <div class="main-box">
@@ -233,7 +233,7 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   z-index:1 ;
 }
 /* .leftside{

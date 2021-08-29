@@ -228,15 +228,16 @@ export default {
   }
 
 .main{
-  position: relative;
-  width: 100%;
+  position: fixed;
+  width: 80%;
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   z-index:1 ;
+  box-sizing: border-box;
 }
 .leftside{
-  width: 25%;
+  width: 30%;
   background-color: rgb(189, 193, 230);
 }
 .box-data{
@@ -291,8 +292,9 @@ export default {
   padding-right: 10px;
 }
 .rightside{
-  width: 75%;
+  width: 60%;
   background-color: whitesmoke;
+  overflow:hidden
 }
 
 .name{
