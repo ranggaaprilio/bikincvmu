@@ -28,7 +28,6 @@ const mutations = {
 const actions = {
   async setUserLogin({commit}, payload) {
     const api = await loginFetch(payload);
-    console.log(api, 'api payload');
     localStorage.setItem('@id', api.user.id);
     localStorage.setItem('@token', api.access_token);
     localStorage.setItem('@name', api.user.name);

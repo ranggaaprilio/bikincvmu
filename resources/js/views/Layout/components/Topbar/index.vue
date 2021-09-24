@@ -236,6 +236,7 @@ export default {
       evt.preventDefault();
       const jsonData = JSON.parse(JSON.stringify(this.form));
       const SendApi= await this.$store.dispatch('auth/setUserLogin', jsonData);
+      console.log('SendApi', SendApi);
       if (SendApi==='true') {
         this.$refs['modal-login'].hide();
         this.$swal({icon: 'success',

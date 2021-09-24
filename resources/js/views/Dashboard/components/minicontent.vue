@@ -64,7 +64,13 @@ export default {
       this.sliding = false;
     },
     routeme(name, id) {
-      router.push({name, params: {id: id}});
+      const isAunteticated= this.$store.getters.isAunteticated;
+      if (!isAunteticated) {
+        {this.$swal({icon: 'warning',
+          title: 'Upss,kamu belum login nih!'});}
+      } else {
+        router.push({name, params: {id: id}});
+      }
     },
   },
 };
