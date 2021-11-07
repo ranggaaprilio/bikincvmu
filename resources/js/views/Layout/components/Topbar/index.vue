@@ -233,18 +233,19 @@ export default {
       return null;
     },
     async onSubmit(evt) {
+      console.log('SendApi up');
       evt.preventDefault();
       const jsonData = JSON.parse(JSON.stringify(this.form));
       const SendApi= await this.$store.dispatch('auth/setUserLogin', jsonData);
-      console.log('SendApi', SendApi);
       if (SendApi==='true') {
         this.$refs['modal-login'].hide();
         this.$swal({icon: 'success',
-          title: 'Login Successfull'});
+          title: 'sukses login'});
         this.getUserDetail();
       } else {
         this.$refs['modal-login'].hide();
-        alert('login Failed');
+        this.$swal({icon: 'error',
+          title: 'Upss,username atau password salah'});
       }
     },
     async onRegist(evt) {

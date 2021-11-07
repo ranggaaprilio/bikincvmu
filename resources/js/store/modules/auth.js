@@ -27,22 +27,30 @@ const mutations = {
 
 const actions = {
   async setUserLogin({commit}, payload) {
-    const api = await loginFetch(payload);
-    localStorage.setItem('@id', api.user.id);
-    localStorage.setItem('@token', api.access_token);
-    localStorage.setItem('@name', api.user.name);
-    // Commit Data
-    commit('SET_ID', api.user.id);
-    // commit('SET_AVATAR', payload.avatar);
-    commit('SET_USER', api.user);
-    commit('SET_TOKEN', api.access_token);
-    commit('SET_AUTH', true);
+    try {
+      const api = await loginFetch(payload);
+      localStorage.setItem('@id', api.user.id);
+      localStorage.setItem('@token', api.access_token);
+      localStorage.setItem('@name', api.user.name);
+      // Commit Data
+      commit('SET_ID', api.user.id);
+      // commit('SET_AVATAR', payload.avatar);
+      commit('SET_USER', api.user);
+      commit('SET_TOKEN', api.access_token);
+      commit('SET_AUTH', true);
 
-    return api.success;
+      return api.success;
+    } catch (error) {
+      return error;
+    }
   },
   async setUserRegister({commit}, payload) {
-    const api = await registFetch(payload);
-    return api.data.success;
+    try {
+      const api = await registFetch(payload);
+      return api.data.success;
+    } catch (error) {
+      return error;
+    }
   },
   async getVerifyToken({commit}, payload) {
     const api = await checkToken(payload);
