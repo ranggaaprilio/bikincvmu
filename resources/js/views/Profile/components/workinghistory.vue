@@ -107,9 +107,20 @@ export default {
   },
   methods: {
     list: async function() {
-      const sendApi = await getWorkingFetch(this.form.user_id);
-      if (sendApi.success) {
-        this.listdata = sendApi.data;
+      const {exp} = this.$store.getters;
+      if (exp.length===0 || mode==='forced') {
+        const sendApi = await getWorkingFetch(this.form.user_id);
+        if (sendApi.success) {
+          this.listdata = sendApi.data;
+          this.$store.dispatch('info/SET_EXP',
+              sendAPI.data);
+        } else {
+          console.log('failed2');
+          this.showAlert(`Uppss,ada yang salah : ${sendAPI.error}`, 'failed');
+          return false;
+        }
+      } else {
+        this.listdata =exp;
       }
     },
     post: async function() {
