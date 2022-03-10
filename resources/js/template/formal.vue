@@ -1,6 +1,7 @@
 <!--eslint-disable max-len -->
 <template>
- <!-- <b-card > -->
+ <b-card >
+          <div style="display:flex;justify;justify-content:center">
           <div class="canvas" id="print-this">
             <div class="main">
               <div style="width: 30%;
@@ -75,7 +76,8 @@
               <div class="rightside-2"></div>
             </div>
           </div>
-        <!-- </b-card> -->
+        </div>
+        </b-card>
 </template>
 
 <script>
@@ -233,7 +235,6 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
   z-index:1 ;
 }
 /* .leftside{

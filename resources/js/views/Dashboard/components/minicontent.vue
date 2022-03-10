@@ -31,7 +31,7 @@ const data = [
   {no: 2, text: 'lorem ipsum 2', delay: 1000,
     pic: '../storage/template/formal.png', title: 'Formal 2'},
   {no: 3, text: 'lorem ipsum 3', delay: 1300,
-    pic: '../storage/template/download.png', title: 'Formal 3'},
+    pic: '../storage/template/active.png', title: 'Formal 3'},
   {no: 4, text: 'lorem ipsum 4', delay: 1600,
     pic: '../storage/template/download.png', title: 'Formal 4'},
   {no: 5, text: 'lorem ipsum 5', delay: 1900,

@@ -2,11 +2,12 @@
 <div class="page">
     <General v-if="param==1" />
     <Formal v-if="param==2" />
+    <Active v-if="param==3" />
 </div>
 </template>
 
 <script>
-import {General, Formal} from './index';
+import {General, Formal, Active} from './index';
 export default {
   name: 'printPage',
   created() {
@@ -23,6 +24,7 @@ export default {
   components: {
     General,
     Formal,
+    Active,
   },
 };
 </script>

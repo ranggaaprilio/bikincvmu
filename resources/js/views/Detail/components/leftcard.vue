@@ -1,5 +1,5 @@
 <template>
-    <b-col md="5">
+    <b-col md="6">
         <b-card class="wrap-card" >
           <h5>Formal</h5>
           <hr>
@@ -22,7 +22,7 @@ export default {
       thumbnail: [
         {src: '../storage/template/download.png', id: 1},
         {src: '../storage/template/formal.png', id: 2},
-        {src: '../storage/template/download.png', id: 3},
+        {src: '../storage/template/active.png', id: 3},
         {src: '../storage/template/download.png', id: 4},
       ],
     };

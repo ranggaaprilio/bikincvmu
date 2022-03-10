@@ -1,6 +1,7 @@
 <!--eslint-disable max-len -->
 <template>
- <!-- <b-card > -->
+ <b-card >
+          <div style="display:flex;justify;justify-content:center">
           <div class="canvas" id="print-this">
             <div class="main">
               <div class="leftside"></div>
@@ -74,6 +75,8 @@
               <div class="rightside"></div>
             </div>
           </div>
+          </div>
+        </b-card>
         <!-- </b-card> -->
 </template>
 
@@ -232,7 +235,6 @@ export default {
   width: 80%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
   z-index:1 ;
   box-sizing: border-box;
 }
@@ -292,7 +294,7 @@ export default {
   padding-right: 10px;
 }
 .rightside{
-  width: 60%;
+  width: 100%;
   background-color: whitesmoke;
   overflow:hidden
 }
