@@ -30,5 +30,6 @@ module.exports = {
       'ignoreHTMLAttributeValues': true,
       'ignoreHTMLTextContents': true,
     }],
+    'linebreak-style': ['error', 'windows'],
   },
 };
