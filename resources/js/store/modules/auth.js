@@ -32,6 +32,7 @@ const actions = {
       localStorage.setItem('@id', api.user.id);
       localStorage.setItem('@token', api.access_token);
       localStorage.setItem('@name', api.user.name);
+      localStorage.setItem('@isAuthenticate', true);
       // Commit Data
       commit('SET_ID', api.user.id);
       // commit('SET_AVATAR', payload.avatar);

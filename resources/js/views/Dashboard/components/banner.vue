@@ -11,8 +11,8 @@
             semudah mengisi biodata hanya dengan 5 menit.
             </h4>
           <hr style="background-color:white">
-          <b-button variant="warning" @click="routeme('detail')">
-              <a href="#tabs-category"
+          <b-button variant="warning" @click="mulai()">
+              <a href="#"
               style="text-decoration:none;color:rgb(4, 37, 73)">
                   Ayo mulai
                 </a></b-button>
@@ -40,6 +40,15 @@ export default {
     };
   },
   methods: {
+    mulai() {
+      // check auth login
+      if (this.$store.getters.isAunteticated) {
+        router.push({name: 'detail'});
+      } else {
+        {this.$swal({icon: 'warning',
+          title: 'Upss,kamu belum login nih!'});}
+      }
+    },
     routeme(name) {
       router.push({name, params: {id: 1}});
     },

@@ -59,8 +59,9 @@ export default {
   computed: {
     profilPic: function() {
       const {ProfilePic} = this.$store.getters;
+      const mixUrl=process.env.MIX_BASE_URL;
       if (ProfilePic) {
-        return `../storage/profilPic/${ProfilePic}`;
+        return `${mixUrl}/storage/profilPic/${ProfilePic}`;
       }
       return '../storage/profilPic/origin.jpg';
     },

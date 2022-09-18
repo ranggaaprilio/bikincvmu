@@ -22,12 +22,12 @@
           <!-- Right aligned nav items -->
           <b-navbar-nav v-if="!isAunteticated" class="ml-auto">
             <b-nav-item>
-              <b-button v-b-modal.modal-login variant="link" style="color:white">Sign In</b-button>
+              <b-button v-b-modal.modal-login variant="link" style="color:white">Masuk</b-button>
               <!-- <b-button v-b-modal.modal-register variant="primary">Sign Up</b-button> -->
             </b-nav-item>
             <b-nav-item>
               <!-- <b-button v-b-modal.modal-login variant="link" style="color:white">Sign In</b-button> -->
-              <b-button v-b-modal.modal-register variant="primary">Sign Up</b-button>
+              <b-button v-b-modal.modal-register variant="primary">Daftar</b-button>
             </b-nav-item>
           </b-navbar-nav>
 
@@ -202,8 +202,9 @@ export default {
     },
     profilPic: function() {
       const {ProfilePic} = this.$store.getters;
+      const mixUrl=process.env.MIX_BASE_URL;
       if (ProfilePic) {
-        return `../storage/profilPic/${ProfilePic}`;
+        return `${mixUrl}/storage/profilPic/${ProfilePic}`;
       }
       return '../storage/profilPic/origin.jpg';
     },
@@ -240,7 +241,7 @@ export default {
       if (SendApi==='true') {
         this.$refs['modal-login'].hide();
         this.$swal({icon: 'success',
-          title: 'sukses login'});
+          title: 'Login Success'});
         this.getUserDetail();
       } else {
         this.$refs['modal-login'].hide();
@@ -275,6 +276,7 @@ export default {
         this.$swal({icon: 'error',
           title: 'Logout failed'});
       } else {
+        this.routeme('dashboard');
         this.$swal({icon: 'success',
           title: 'Logout Success'});
       }
